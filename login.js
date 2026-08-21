@@ -1,23 +1,46 @@
-// ==========================================================
-// Boykisser Airlines — Initialisation Firebase (partagée)
-// ==========================================================
-const firebaseConfig = {
-  apiKey: "AIzaSyBPq6Wfxzq02MfK69BFxHm9_FUjDGTmAcw",
-  authDomain: "kykychat-24c7f.firebaseapp.com",
-  databaseURL: "https://kykychat-24c7f-default-rtdb.firebaseio.com",
-  projectId: "kykychat-24c7f",
-  storageBucket: "kykychat-24c7f.firebasestorage.app",
-  messagingSenderId: "342562811927",
-  appId: "1:342562811927:web:0fed1e1f511c4fddcfec52"
-};
+const form = document.getElementById('login-form');
+const msg = document.getElementById('form-msg');
+const submitBtn = document.getElementById('submit-btn');
 
-firebase.initializeApp(firebaseConfig);
+function showMsg(text, type){
+  msg.textContent = text;
+  msg.className = 'form-msg show ' + type;
+}
 
-const auth = firebase.auth();
-const db = firebase.firestore();
+auth.onAuthStateChanged(user => {
+  if (user) window.location.href = 'dashboard.html';
+});
 
-// Collections Firestore utilisées dans tout le site :
-//  - users/{uid}            -> { nom, prenom, dateNaissance, email, role, activeFlightId, createdAt }
-//  - flights/{flightId}     -> { callsign, depart, arrivee, avion, passagers, distance, description, actif, createdAt }
-//  - liveFlights/{uid}      -> { flightId, callsign, depart, arrivee, avion, passagers, pilotNom, lat, lng, startedAt }
-//  - flightLog/{autoId}     -> { uid, pilotNom, flightId, callsign, depart, arrivee, startedAt, endedAt }
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  msg.className = 'form-msg';
+
+  const email = document.getElementById('email').value.trim();
+  const password = document.getElementById('password').value;
+
+  if (!email || !password) {
+    showMsg('Merci de remplir tous les champs.', 'error');
+    return;
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = 'Connexion…';
+
+  try {
+    await auth.signInWithEmailAndPassword(email, password);
+    window.location.href = 'dashboard.html';
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = 'Se connecter';
+
+    let text = "Une erreur est survenue. Réessaie.";
+    if (['auth/wrong-password','auth/user-not-found','auth/invalid-credential'].includes(err.code)) {
+      text = "Adresse e-mail ou mot de passe incorrect.";
+    } else if (err.code === 'auth/invalid-email') {
+      text = "Adresse e-mail invalide.";
+    } else if (err.code === 'auth/too-many-requests') {
+      text = "Trop de tentatives. Réessaie plus tard.";
+    }
+    showMsg(text, 'error');
+  }
+});
