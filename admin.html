@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Administration — Boykisser Airlines</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo Boykisser Airlines">
+      <div class="brand__text">
+        <strong>Boykisser Airlines</strong>
+        <span>Administration</span>
+      </div>
+    </a>
+    <div class="top-nav-slim" style="margin-left:auto;">
+      <span id="user-email"></span>
+      <a href="dashboard.html" class="btn btn--outline btn--sm">Mon espace pilote</a>
+      <button id="logout-btn" class="btn btn--outline btn--sm">Déconnexion</button>
+    </div>
+  </div>
+</header>
+
+<!-- Écran si non connecté -->
+<div id="gate-login" class="gate hidden">
+  <div class="card">
+    <h2 style="font-family:var(--font-display);text-transform:uppercase;margin-top:0;">Accès administrateur</h2>
+    <p style="color:var(--ink-soft);font-size:14px;">Connecte-toi avec un compte administrateur pour accéder à cette page.</p>
+    <a href="login.html" class="btn btn--gold btn--full">Se connecter</a>
+  </div>
+</div>
+
+<!-- Écran si connecté mais pas admin -->
+<div id="gate-denied" class="gate hidden">
+  <div class="card">
+    <h2 style="font-family:var(--font-display);text-transform:uppercase;margin-top:0;">Accès refusé</h2>
+    <p style="color:var(--ink-soft);font-size:14px;">Ton compte n'a pas les droits administrateur.</p>
+    <a href="dashboard.html" class="btn btn--dark btn--full">Retour à mon espace</a>
+  </div>
+</div>
+
+<div id="loading" class="loader">VÉRIFICATION DES ACCÈS…</div>
+
+<div id="admin-content" class="admin-shell hidden">
+  <div class="container">
+    <h1>Panneau d'administration</h1>
+    <p class="sub">Publie les routes officielles de Boykisser Airlines.</p>
+
+    <div class="admin-grid">
+      <div class="admin-card">
+        <h2>Nouvelle route</h2>
+        <div id="form-msg" class="form-msg"></div>
+        <form id="flight-form" novalidate>
+          <div class="field">
+            <label for="callsign">Callsign</label>
+            <input type="text" id="callsign" placeholder="BKS123" required>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="depart">Aéroport de départ (code)</label>
+              <input type="text" id="depart" placeholder="LFPG" required maxlength="4" style="text-transform:uppercase;">
+            </div>
+            <div class="field">
+              <label for="arrivee">Aéroport d'arrivée (code)</label>
+              <input type="text" id="arrivee" placeholder="EGLL" required maxlength="4" style="text-transform:uppercase;">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="departLat">Latitude départ (optionnel)</label>
+              <input type="number" step="any" id="departLat" placeholder="49.0097">
+            </div>
+            <div class="field">
+              <label for="departLng">Longitude départ (optionnel)</label>
+              <input type="number" step="any" id="departLng" placeholder="2.5479">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="arriveeLat">Latitude arrivée (optionnel)</label>
+              <input type="number" step="any" id="arriveeLat" placeholder="51.4700">
+            </div>
+            <div class="field">
+              <label for="arriveeLng">Longitude arrivée (optionnel)</label>
+              <input type="number" step="any" id="arriveeLng" placeholder="-0.4543">
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <label for="avion">Appareil</label>
+              <input type="text" id="avion" placeholder="Airbus A320neo" required>
+            </div>
+            <div class="field">
+              <label for="passagers">Nombre de passagers</label>
+              <input type="number" id="passagers" placeholder="150" min="0" required>
+            </div>
+          </div>
+          <div class="field">
+            <label for="distance">Distance (nm, optionnel)</label>
+            <input type="number" id="distance" placeholder="215">
+          </div>
+          <div class="field">
+            <label for="description">Description (optionnel)</label>
+            <textarea id="description" rows="3" placeholder="Route court-courrier entre Paris et Londres."></textarea>
+          </div>
+          <button type="submit" id="submit-btn" class="btn btn--gold btn--full">Publier la route</button>
+        </form>
+      </div>
+
+      <div class="admin-card">
+        <h2>Routes publiées</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Callsign</th>
+                <th>Trajet</th>
+                <th>Appareil</th>
+                <th>Pax</th>
+                <th>Statut</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="flights-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-init.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

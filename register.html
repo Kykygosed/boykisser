@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devenir pilote — Boykisser Airlines</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo Boykisser Airlines">
+      <div class="brand__text">
+        <strong>Boykisser Airlines</strong>
+        <span>Virtual Airline · MSFS</span>
+      </div>
+    </a>
+    <div class="top-nav-slim" style="margin-left:auto;">
+      <span>Déjà pilote ?</span>
+      <a href="login.html" class="btn btn--outline btn--sm">Connexion</a>
+    </div>
+  </div>
+</header>
+
+<div class="auth-wrap">
+  <div class="boarding-pass">
+    <div class="boarding-pass__head">
+      <img src="assets/logo.png" alt="">
+      <div>
+        <strong>Dossier pilote</strong>
+        <span>BOARDING PASS · NEW HIRE</span>
+      </div>
+    </div>
+    <div class="boarding-pass__body">
+      <h1>Devenir pilote</h1>
+      <p class="sub">Renseigne tes informations pour créer ton compte Boykisser Airlines.</p>
+
+      <div id="form-msg" class="form-msg"></div>
+
+      <form id="register-form" novalidate>
+        <div class="field-row">
+          <div class="field">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" required autocomplete="given-name">
+          </div>
+          <div class="field">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" required autocomplete="family-name">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="dob">Date de naissance</label>
+          <input type="date" id="dob" required autocomplete="bday">
+        </div>
+
+        <div class="field">
+          <label for="email">Adresse e-mail</label>
+          <input type="email" id="email" required autocomplete="email">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" required minlength="6" autocomplete="new-password">
+          </div>
+          <div class="field">
+            <label for="password2">Confirmation</label>
+            <input type="password" id="password2" required minlength="6" autocomplete="new-password">
+          </div>
+        </div>
+
+        <button type="submit" id="submit-btn" class="btn btn--gold btn--full">Créer mon compte</button>
+      </form>
+
+      <p class="switch-link">Déjà un compte ? <a href="login.html">Se connecter</a></p>
+    </div>
+  </div>
+</div>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-init.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>

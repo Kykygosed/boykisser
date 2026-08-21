@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tableau de bord — Boykisser Airlines</title>
+<link rel="icon" href="assets/logo.png">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="index.html" class="brand">
+      <img src="assets/logo.png" alt="Logo Boykisser Airlines">
+      <div class="brand__text">
+        <strong>Boykisser Airlines</strong>
+        <span>Virtual Airline · MSFS</span>
+      </div>
+    </a>
+    <div class="top-nav-slim" style="margin-left:auto;">
+      <span id="user-email"></span>
+      <button id="logout-btn" class="btn btn--outline btn--sm">Déconnexion</button>
+    </div>
+  </div>
+</header>
+
+<div class="dash">
+  <div class="container">
+
+    <div class="dash__head">
+      <div>
+        <h1>Bienvenue, <span id="pilot-name">…</span></h1>
+        <p>Voici ton espace pilote Boykisser Airlines.</p>
+      </div>
+      <div class="pilot-id" id="pilot-id">ID PILOTE · …</div>
+    </div>
+
+    <div id="loading" class="loader">CHARGEMENT DU DOSSIER PILOTE…</div>
+
+    <div id="dashboard-content" class="hidden">
+
+      <!-- ROUTE ACTIVE -->
+      <div id="active-route-block" class="hidden"></div>
+
+      <!-- LISTE DES VOLS DISPONIBLES -->
+      <div id="flights-block" class="hidden">
+        <div class="flights-head">
+          <h2>Routes disponibles</h2>
+        </div>
+        <div id="flights-grid" class="flight-grid"></div>
+      </div>
+
+      <!-- AUCUN VOL DISPONIBLE -->
+      <div id="no-flights" class="card empty-state hidden">
+        <div style="font-size:40px;">🛫</div>
+        <h3>Aucune route publiée pour le moment</h3>
+        <p>Reviens un peu plus tard, la compagnie publie régulièrement de nouvelles routes.</p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer__inner">
+    <span>© 2026 Boykisser Airlines — Compagnie aérienne virtuelle non officielle pour MSFS.</span>
+    <span>Fan project — sans lien avec Asobo Studio ou Microsoft.</span>
+  </div>
+</footer>
+
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.13.1/firebase-firestore-compat.js"></script>
+<script src="js/firebase-init.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="js/dashboard.js"></script>
+</body>
+</html>
