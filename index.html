@@ -30,7 +30,10 @@
 <section class="hero">
   <div class="container hero__grid">
     <div>
-      <div class="eyebrow">Compagnie aérienne virtuelle · Microsoft Flight Simulator</div>
+      <div class="eyebrow" style="display:flex;align-items:center;gap:10px;">
+        <span>Compagnie aérienne virtuelle · Microsoft Flight Simulator</span>
+        <img src="boykisser-2.png" alt="" style="width:34px;height:34px;object-fit:contain;background:var(--cream);border-radius:50%;border:2px solid var(--gold);padding:3px;">
+      </div>
       <h1>Embarque pour<br><em>Boykisser Airlines</em></h1>
       <p class="lead">
         LA compagnie pour les pilotes sans sérieux! Rejoint nous dès maintenant
@@ -66,10 +69,13 @@
 
 <section id="comment-ca-marche">
   <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">Le principe</div>
-      <h2>Trois étapes, un vol</h2>
-      <p>Pas de plan de vol à inventer : la compagnie publie les routes, tu embarques dessus.</p>
+    <div class="section-head" style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;">
+      <div>
+        <div class="eyebrow">Le principe</div>
+        <h2>Trois étapes, un vol</h2>
+        <p>Pas de plan de vol à inventer : la compagnie publie les routes, tu embarques dessus.</p>
+      </div>
+      <img src="boykisser-1.png" alt="" style="width:90px;height:90px;object-fit:contain;background:var(--paper);border-radius:16px;border:2px solid var(--gold);padding:6px;transform:rotate(-6deg);flex-shrink:0;">
     </div>
     <div class="steps">
       <div class="step">
@@ -92,30 +98,6 @@
   </div>
 </section>
 
-<section class="gallery">
-  <div class="container">
-    <div class="section-head">
-      <div class="eyebrow">La mascotte</div>
-      <h2>Boykisser, en toute occasion</h2>
-      <p>Il approuve chaque vol de la compagnie.</p>
-    </div>
-    <div class="gallery__grid">
-      <figure class="gallery__item gallery__item--big">
-        <img src="boykisser-4.gif" alt="Boykisser tout content">
-      </figure>
-      <figure class="gallery__item">
-        <img src="boykisser-1.png" alt="Boykisser assis">
-      </figure>
-      <figure class="gallery__item">
-        <img src="boykisser-2.png" alt="Boykisser qui cligne des yeux">
-      </figure>
-      <figure class="gallery__item">
-        <img src="boykisser-3.webp" alt="Boykisser en gros plan">
-      </figure>
-    </div>
-  </div>
-</section>
-
 <section class="about" id="a-propos">
   <div class="container about__grid">
     <div>
@@ -124,6 +106,7 @@
         Une VA née d'un meme internet
       </h2>
       <p>
+        <img src="boykisser-3.webp" alt="" style="width:64px;height:64px;object-fit:cover;border-radius:50%;border:2px solid var(--gold);float:left;margin:2px 14px 6px 0;">
         Vous connaissez sûrement boykisser ou "silly cat", un dessin réalisé par Mauzymice en 2022...
         Je pense qu'il est inutile de détailler réellement ce phénomène.
       </p>
@@ -135,13 +118,16 @@
         Une maîtrise suffisante de l'appareil est demandée si vous jouez en réseau.
       </p>
     </div>
-    <img src="boykisser-1.png" alt="Boykisser Airlines">
+    <img src="boykisser-1.png" alt="Boykisser Airlines" style="max-width:260px;margin:0 auto;transform:rotate(3deg);">
   </div>
 </section>
 
 <section class="cta-band">
   <div class="container">
-    <h2>Prêt à décoller ?</h2>
+    <h2 style="display:flex;align-items:center;justify-content:center;gap:14px;">
+      Prêt à décoller ?
+      <img src="boykisser-4.gif" alt="" style="width:56px;height:56px;object-fit:contain;background:var(--cream);border-radius:50%;border:2px solid var(--gold);padding:4px;">
+    </h2>
     <p>La création de compte prend moins d'une minute.</p>
     <a href="register.html" class="btn btn--gold">Devenir pilote</a>
   </div>
