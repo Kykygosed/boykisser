@@ -92,6 +92,30 @@
   </div>
 </section>
 
+<section class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">La mascotte</div>
+      <h2>Boykisser, en toute occasion</h2>
+      <p>Il approuve chaque vol de la compagnie.</p>
+    </div>
+    <div class="gallery__grid">
+      <figure class="gallery__item gallery__item--big">
+        <img src="boykisser-4.gif" alt="Boykisser tout content">
+      </figure>
+      <figure class="gallery__item">
+        <img src="boykisser-1.png" alt="Boykisser assis">
+      </figure>
+      <figure class="gallery__item">
+        <img src="boykisser-2.png" alt="Boykisser qui cligne des yeux">
+      </figure>
+      <figure class="gallery__item">
+        <img src="boykisser-3.webp" alt="Boykisser en gros plan">
+      </figure>
+    </div>
+  </div>
+</section>
+
 <section class="about" id="a-propos">
   <div class="container about__grid">
     <div>
@@ -111,7 +135,7 @@
         Une maîtrise suffisante de l'appareil est demandée si vous jouez en réseau.
       </p>
     </div>
-    <img src="logo.png" alt="Boykisser Airlines">
+    <img src="boykisser-1.png" alt="Boykisser Airlines">
   </div>
 </section>
 
@@ -129,6 +153,15 @@
     <span>Fan project — sans lien avec Asobo Studio ou Microsoft.</span>
   </div>
 </footer>
+
+<!-- Sons du site -->
+<audio id="site-audio" src="site-audio.mp3" loop preload="auto"></audio>
+<audio id="meow-audio" src="meow.mp3" preload="auto"></audio>
+
+<!-- Bouton son, apparaît si la lecture automatique est bloquée par le navigateur -->
+<button id="sound-unlock" class="sound-unlock hidden" aria-label="Activer le son">🔇 Activer le son</button>
+
+<script src="site-audio.js"></script>
 
 </body>
 </html>
